@@ -1,0 +1,15 @@
+<nav>
+    <div class="right">
+        <img src="assets/uxLogo.jfif" alt="" class="logo" routerLink="/home" (click)="active(home)">
+    </div>
+    <div class="container">
+        <div class="links">
+            <li #home routerLink="/home" class="active" (click)="active(home)" id="home">Home</li>
+            <li #pro routerLink="/products" (click)="active(pro)" id="pro">Manage Product</li>
+        </div>
+    </div>
+    <div class="cart">
+        <span>Shopping cart</span> <span class="draw"><li></li>
+        <li class="black"></li></span>
+    </div>
+</nav>

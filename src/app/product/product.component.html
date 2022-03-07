@@ -1,0 +1,62 @@
+<!-- <app-navbar> -->
+<!-- </app-navbar> -->
+<div class="product">
+    <div class="container">
+        <div class="form">
+            <form class="form" [formGroup]='product' (ngSubmit)="addProduct()">
+                <div class="form-group">
+                    <label>Product name <span style="color: red;">*</span></label>
+                    <input formControlName='pname' type="text" class="form-input" required placeholder="Enter product name">
+
+                    <small class="text-danger" *ngIf="(product.controls['pname'].touched || submitted) && product.controls['pname'].errors?.['required']">
+                    Product name is required
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label>Price <span style="color: red;">*</span></label>
+                    <input formControlName='price' type="number" class="form-input" required placeholder="Enter price">
+
+                    <small class="text-danger" *ngIf="(product.controls['price'].touched || submitted) && product.controls['price'].errors?.['required']">
+                    Price is required
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label>Product description <span class="grey">(optional)</span> </label>
+                    <textarea formControlName='desc' type="text" class="form-input" rows="4" placeholder="Enter description"></textarea>
+
+
+                </div>
+                <div class="form-group">
+                    <label>Product image <span class="grey">(optional)</span></label>
+                    <input #img formControlName='img' type="file" class="custom-form-input" (change)="changeImgName(img)" accept=".png,.jpg,.jpeg">
+                    <div class="inp">
+                        <span class="input" id="input">Choose file...</span>
+                        <span class="browse">Browse</span>
+                    </div>
+                </div>
+                <button type="submit" class="submit" (disabled)="status" *ngIf="status">Add product</button>
+
+            </form>
+        </div>
+
+    </div>
+    <div class="container list-cont">
+
+        <div class="list-head">
+            <li style="font-weight: 600;color: #333;border-top: solid grey 0.1px"></li>
+            <li style="font-weight: 600;color: #333;border-top: solid grey 0.1px">Name</li>
+            <li style="font-weight: 600;color: #333;border-top: solid grey 0.1px">Description</li>
+            <li style="font-weight: 600;color: #333;border-top: solid grey 0.1px">Price</li>
+            <li style="font-weight: 600;color: #333;border-top: solid grey 0.1px">Price</li>
+        </div>
+        <div class="list-div">
+            <div class="list" *ngFor="let i of list">
+                <li><img src={{i.img}} alt="" *ngIf="i.img"></li>
+                <li>{{i.pname}}</li>
+                <li>{{i.desc}}</li>
+                <li>{{i.price}} :-SEK</li>
+                <li (click)="remove(list.indexOf(i))" style="color: rgb(23, 182, 255);cursor: pointer;">Remove</li>
+            </div>
+        </div>
+    </div>
+</div>
